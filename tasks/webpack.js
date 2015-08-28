@@ -35,13 +35,13 @@ module.exports = function(grunt) {
     filter: function(filepath) {
       return true;
     },
-  }, 'src/*/demo/webpack.config.js');
-  var demoIds = demos.map(function(demo) { return /\d+(-\d+)/.exec(demo)[0]; });
+  }, 'src/{*/demo,*-demo{,-*}}/webpack.config.js');
+  var demoIds = demos.map(function(demo) { return /\d+(-\d+)?[/-]demo(-\d+)?/.exec(demo)[0]; });
   var ports = demos.map(function() {
     return port++;
   });
   var proxies = demoIds.reduce(function(carry, demo, index) {
-    carry['/' + demo + '/demo/*'] = 'http://' + host + ':' + ports[index];
+    carry['/' + demo + '/*'] = 'http://' + host + ':' + ports[index];
     return carry;
   }, {});
   var hotRegex = /08-/;
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
       host: host,
       port: ports[index],
       contentBase: 'dist',
-      publicPath: '/' + id + '/demo/',
+      publicPath: '/' + id + '/',
       webpack: evalConfig(grunt, demos[index]),
     };
     webpackDevServerConfig[id].webpack.plugins = webpackDevServerConfig[id].webpack.plugins || [];

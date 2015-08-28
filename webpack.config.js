@@ -7,14 +7,27 @@ module.exports = {
   watch: true,
   module: {
     loaders: [
+      // {
+      //   test: /.js$/,
+      //   excludes: /node_modules/,
+      //   loader: 'babel-loader',
+      // },
+      {
+        test: /^jquery$/,
+        loaders: 'exports-loader?jQuery!script-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: ['babel-loader'],
       },
       {
+        test: /\.(html(.md)?|dom\.js)$/,
+        loaders: ['div-loader'],
+      },
+      {
         test: /\.html(.md)?$/,
-        loaders: ['div-loader', 'html-loader'],
+        loaders: ['html-loader'],
       },
       {
         test: /\.md$/,
@@ -35,7 +48,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.md', '.html', '.html.md'],
+    extensions: ['', '.js', '.dom.js', '.md', '.html', '.html.md'],
     modulesDirectories: ['node_modules', 'web_loaders'],
   },
 };

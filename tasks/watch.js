@@ -10,7 +10,7 @@ module.exports = function(grunt) {
       },
     },
     webpack: {
-      files: ['webpack.config.js', 'tasks/webpack.js', 'src/*/demo/webpack.config.js'],
+      files: ['webpack.config.js', 'tasks/webpack.js', 'src/{*/demo,*-demo{,-*}}/webpack.config.js'],
       tasks: 'webpack-dev-server',
       options: {
         spawn: false,
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       },
     },
     index: {
-      files: ['index.html', 'src/*/demo/{index.html,*.wav}', 'tasks/copy.js'],
+      files: ['index.html', 'src/{*/demo,*-demo{,-*}}/{index.html,*.wav}', 'tasks/copy.js'],
       tasks: 'copy',
       options: {
         spawn: false,
