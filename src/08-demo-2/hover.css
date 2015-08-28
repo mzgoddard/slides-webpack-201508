@@ -1,0 +1,8 @@
+/* hover.css */
+img {
+  transition: -webkit-filter 0.3s;
+}
+
+img:hover {
+  -webkit-filter: brightness(1.2) saturate(190%);
+}

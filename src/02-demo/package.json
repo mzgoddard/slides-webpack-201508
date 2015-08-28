@@ -1,0 +1,11 @@
+{
+  "name": "webpack-demo",
+  "scripts": {
+    "build": "cp index.html dist && webpack",
+    "dev": "cp index.html dist && webpack-dev-server"
+  },
+  "devDependencies": {
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  }
+}

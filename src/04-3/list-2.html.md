@@ -1,0 +1,2 @@
+- loaders are read right to left
+- starting with the original file's raw content is read into the loader to left of that file's path
